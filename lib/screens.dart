@@ -102,7 +102,7 @@ class AnotherLayOut extends StatefulWidget {
 }
 
 class _AnotherLayOutState extends State<AnotherLayOut> {
-   int numbers = 1;
+  int numbers = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -138,38 +138,75 @@ class _AnotherLayOutState extends State<AnotherLayOut> {
   }
 }
 
-
 class ExpandedTest extends StatelessWidget {
-
   // expanded d b2a bt3ml a lw nta kont f el column bt2olo 5od el height el ba2y
   // lw nta kont f raw bt2olo 5od el 3ard el ba2y
-  // fa lw feh nesb yb2a nta m7tag expanded 
+  // fa lw feh nesb yb2a nta m7tag expanded
+  // 5asyt flex msh btsht8l 8er lama ykon feh aktr mn expanded widget
+  // flex d bt2sm el shasha le kza kt3a
   const ExpandedTest({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              color: Colors.black,
-
-            ),
-          ), Expanded(
-            child: Container(
-              color: Colors.white,
-
-            ),
-          ), Expanded(
-            child: Container(
-              color: Colors.red,
-
-            ),
+    return Scaffold(
+      body: Column(children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: Colors.black,
           ),
-        ]
-      ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.white,
+          ),
+        ),
+        Expanded(
+          flex: 3,
+          child: Container(
+            color: Colors.red,
+          ),
+        ),
+      ]),
     );
   }
 }
 
+class FlexibleTest extends StatelessWidget {
+  // flexible el bt3mlo enha bt5ly el child bta3ha marna tt8yr 3la 7sb el msa7a el hya feha
+  const FlexibleTest({super.key});
+
+  // fittedBox w d bt5ly el child bta3ha y3ml fit f el msa7a el hwa feha ya5odha bzbt
+  // lw ana msh 3ayz el child ykbr 3n el 7agm el tbe3 ast5dm scale down
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          const Flexible(
+            child: FittedBox(
+              child: Icon(
+                Icons.ac_unit,
+                size: 300,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.black12,
+              height: 150,
+              child: const FittedBox(fit: BoxFit.scaleDown,child:  Icon(Icons.abc)),
+            ),
+          ),
+          Container(
+            color: Colors.black,
+            height: 150,
+          ),
+         
+        ],
+      ),
+    );
+  }
+}

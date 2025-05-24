@@ -197,15 +197,59 @@ class FlexibleTest extends StatelessWidget {
             child: Container(
               color: Colors.black12,
               height: 150,
-              child: const FittedBox(fit: BoxFit.scaleDown,child:  Icon(Icons.abc)),
+              child: const FittedBox(
+                  fit: BoxFit.scaleDown, child: Icon(Icons.abc)),
             ),
           ),
           Container(
             color: Colors.black,
             height: 150,
           ),
-         
         ],
+      ),
+    );
+  }
+}
+
+class FittedBoxTest extends StatelessWidget {
+  const FittedBoxTest({super.key});
+
+  static const imagesUrl = [
+    'https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg',
+    'https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg',
+    'https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg',
+    'https://images.ctfassets.net/hrltx12pl8hq/qGOnNvgfJIe2MytFdIcTQ/429dd7e2cb176f93bf9b21a8f89edc77/Images.jpg',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: GridView.builder(
+        itemCount: FittedBoxTest.imagesUrl.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
+        itemBuilder: (context, index) =>
+            FittedBox(child: Image.network(FittedBoxTest.imagesUrl[index])),
+      ),
+    );
+  }
+}
+class AspectRatioTest extends StatelessWidget {
+  const AspectRatioTest({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      body: AspectRatio(
+        aspectRatio: 1,
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            color: Colors.red,
+            width: MediaQuery.sizeOf(context).width,
+          ),
+        ),
       ),
     );
   }

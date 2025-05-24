@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const Scaffold(
-        body: FlexibleTest(),
+        body: AspectRatioTest(),
       ),
     );
   }

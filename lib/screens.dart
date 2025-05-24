@@ -235,20 +235,108 @@ class FittedBoxTest extends StatelessWidget {
     );
   }
 }
+
 class AspectRatioTest extends StatelessWidget {
   const AspectRatioTest({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: AspectRatio(
-        aspectRatio: 1,
+        aspectRatio: 2,
         child: Align(
           alignment: Alignment.topCenter,
           child: Container(
             color: Colors.red,
             width: MediaQuery.sizeOf(context).width,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class IntrinsicTest extends StatelessWidget {
+  // el 5olasa en Intrinsic btst5m 3shan t7dd akbr width aw height le child
+  // bs 5ly balk enha moklfa shoia mn n7yt el ada2 fa 7awl ma tst5dmhash 8er lw m7tagha f3ln
+  const IntrinsicTest({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(children: [
+              const SizedBox(height: 250),
+              IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        color: Colors.red,
+                        child: const Column(
+                          children: [
+                            Text('data'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              // height: 200,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              // height: 200,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ]),
+            const SizedBox(
+              height: 50,
+            ),
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                      color: Colors.red, width: 100, child: const Text("قصير")),
+                  Container(
+                      color: Colors.blue,
+                      width: 100,
+                      child: const Text("هذا نص أطول شوية")),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            IntrinsicWidth(
+              child: Column(
+                children: [
+                  Container(color: Colors.green, child: const Text("نص")),
+                  Container(
+                      color: Colors.green, child: const Text("نص أطول بكتير")),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
